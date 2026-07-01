@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>リアル日本地図</title>
+    <link rel="stylesheet" href="https://unpkg.com" />
+    <style>
+        html, body, #map { width: 100%; height: 100%; margin: 0; }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script src="https://unpkg.com"></script>
+    <script>
+        const map = L.map('map').setView([36.0, 138.0], 5);
+        // 国土地理院の「標準地図」を設定
+        L.tileLayer('https://gsi.go.jp{z}/{x}/{y}.png', {
+            attribution: "<a href='https://gsi.go.jp' target='_blank'>国土地理院</a>"
+        }).addTo(map);
+        // 東京駅にマーカーを追加
+        L.marker([35.681236, 139.767125]).addTo(map).bindPopup('東京駅');
+    </script>
+</body>
+</html>
